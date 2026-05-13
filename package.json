@@ -1,0 +1,22 @@
+{
+  "name": "hoohkun-skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Private installer for Hoohkun's daily agent skills.",
+  "bin": {
+    "hoohkun-skills": "./bin/hoohkun-skills.mjs"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "install-manifest.json",
+    "README.md",
+    "CONTEXT.md"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

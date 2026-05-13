@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "namespace": "hoohkun-",
+  "targetLockfile": "hoohkun-skills-lock.json",
+  "skills": {
+    "grilling": {
+      "path": "skills/engineering/planning/grilling",
+      "category": "engineering",
+      "group": "planning",
+      "description": "Challenge plans against project language and docs.",
+      "dependencies": []
+    },
+    "prototyping": {
+      "path": "skills/engineering/planning/prototyping",
+      "category": "engineering",
+      "group": "planning",
+      "description": "Build throwaway prototypes that make options concrete before choosing a direction.",
+      "dependencies": []
+    }
+  }
+}
