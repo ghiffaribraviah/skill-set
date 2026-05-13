@@ -214,14 +214,14 @@ async function updateTargetInstallRecord(manifest, skillsRoot, installedSkills) 
   const lockPath = path.join(skillsRoot, manifest.targetLockfile);
   const lock = (await readJson(lockPath).catch(() => null)) ?? {
     version: 1,
-    source: "hoohkun/skill-set",
+    source: manifest.source ?? "ghiffaribraviah/skill-set",
     sourceType: "private-github",
     namespace: manifest.namespace,
     skills: {}
   };
 
   lock.version = 1;
-  lock.source = "hoohkun/skill-set";
+  lock.source = manifest.source ?? "ghiffaribraviah/skill-set";
   lock.sourceType = "private-github";
   lock.namespace = manifest.namespace;
   lock.updatedAt = new Date().toISOString();

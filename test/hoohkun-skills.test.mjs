@@ -20,6 +20,7 @@ test("installs a namespaced skill directory and private lockfile", async () => {
   const lock = JSON.parse(await fs.readFile(lockPath, "utf8"));
 
   assert.match(installedSkill, /^name: hoohkun-grilling$/m);
+  assert.equal(lock.source, "ghiffaribraviah/skill-set");
   assert.equal(lock.skills["hoohkun-grilling"].sourceName, "grilling");
   assert.equal(lock.skills["hoohkun-grilling"].targetPath, ".agents/skills/hoohkun-grilling");
 

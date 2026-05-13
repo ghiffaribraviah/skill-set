@@ -1,5 +1,6 @@
 {
   "version": 1,
+  "source": "ghiffaribraviah/skill-set",
   "namespace": "hoohkun-",
   "targetLockfile": "hoohkun-skills-lock.json",
   "skills": {

@@ -64,9 +64,9 @@ The target flow is:
 This repo includes a small private installer for curated Daily Skills:
 
 ```bash
-npx github:hoohkun/skill-set list
-npx github:hoohkun/skill-set install grilling
-npx github:hoohkun/skill-set install prototyping --target /path/to/repo
+npx github:ghiffaribraviah/skill-set list
+npx github:ghiffaribraviah/skill-set install grilling
+npx github:ghiffaribraviah/skill-set install prototyping --target /path/to/repo
 ```
 
 The installer reads `install-manifest.json`, copies the whole skill directory into the target repo's `.agents/skills/` directory, and applies the private `hoohkun-` namespace:
@@ -91,7 +91,7 @@ These are the current Daily Skills exposed by `install-manifest.json`:
 Run this to see the manifest-backed list from the CLI:
 
 ```bash
-npx github:hoohkun/skill-set list
+npx github:ghiffaribraviah/skill-set list
 ```
 
 ## What Belongs Here
