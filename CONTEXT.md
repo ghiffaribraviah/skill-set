@@ -16,9 +16,41 @@ _Avoid_: Local-only skill, repo's skill in skills
 The npm-distributed command surface used to install **Published Skills** from a **Skill Catalog** into another repository.
 _Avoid_: Generic skills command, manual copy workflow
 
+**CLI Package**:
+The npm package that distributes the **Skill Catalog CLI**.
+_Avoid_: Catalog source, installed skill
+
+**Buildless CLI**:
+A plain JavaScript **CLI Package** that runs directly on Node.js without a compile or bundling step.
+_Avoid_: TypeScript-first CLI, bundled binary
+
+**CLI Runtime Baseline**:
+The minimum Node.js version supported by the **CLI Package**.
+_Avoid_: Browser support, package manager support
+
+**Add Command**:
+The **Skill Catalog CLI** command that installs selected or all **Published Skills** from a **Skill Catalog**.
+_Avoid_: Update command, sync command
+
+**List Command**:
+The **Skill Catalog CLI** command that shows discovered **Published Skills** without installing them.
+_Avoid_: Search command, registry browser
+
 **Catalog Source**:
 The GitHub repository identifier that tells the **Skill Catalog CLI** which **Skill Catalog** to install from.
 _Avoid_: Package name, registry name
+
+**Catalog Ref**:
+The optional Git branch, tag, or commit selected when installing from a **Catalog Source**.
+_Avoid_: Version string only, npm version
+
+**Catalog Archive Fetch**:
+The default fetch strategy where the **Skill Catalog CLI** downloads a GitHub archive for a **Catalog Source** and **Catalog Ref**.
+_Avoid_: Git clone by default, npm package install as source
+
+**Catalog Discovery Rule**:
+The convention that a **Published Skill** is discovered from a `skills/*/SKILL.md` file with valid skill frontmatter.
+_Avoid_: Catalog manifest, manual registry
 
 **Installed Skill**:
 A copy of a **Published Skill** placed into a target repository's agent skill directory for local use.
@@ -31,6 +63,22 @@ _Avoid_: Root skills directory, global agent directory
 **Skill Install Lockfile**:
 The `.agents/skills-lock.json` file in a target repository that records installed skill source metadata.
 _Avoid_: Root lockfile, package lock
+
+**Installed Skill Hash**:
+A deterministic hash of an **Installed Skill** directory used to detect local edits before reinstalling.
+_Avoid_: Package integrity hash, source archive hash
+
+**Install Conflict**:
+A state where an **Installed Skill** exists but its current files differ from the metadata in the **Skill Install Lockfile**.
+_Avoid_: Merge conflict, dirty package
+
+**Forced Skill Install**:
+An explicit overwrite of an **Installed Skill** during an **Install Conflict**.
+_Avoid_: Silent overwrite, automatic update
+
+**Instruction File Non-Modification Rule**:
+The v1 installer rule that the **Skill Catalog CLI** does not automatically edit target-repository agent instruction files.
+_Avoid_: Automatic AGENTS.md wiring, implicit agent configuration
 
 **CDD Skill**:
 A frontend implementation skill that guides an agent from UI/UX request intake through context gathering, component-state discovery, implementation, and verification.
@@ -448,9 +496,19 @@ _Avoid_: Treating shared primitives like page-local UI
 
 - A **Skill Catalog** contains one or more **Published Skills**
 - The **CDD Skill** is the first **Published Skill** in this **Skill Catalog**
+- The **Catalog Discovery Rule** uses `skills/*/SKILL.md` as the source of truth for **Published Skills**
 - The **Skill Catalog CLI** installs **Published Skills** from a **Catalog Source**
+- The **CLI Package** is a **Buildless CLI** distributed through npm
+- The **CLI Runtime Baseline** is Node.js `>=20`
+- The v1 **Skill Catalog CLI** exposes an **Add Command** and a **List Command**
+- The **Add Command** installs all discovered **Published Skills** when no skill names are provided
+- A **Catalog Source** may include a **Catalog Ref** using `owner/repo#ref`
+- A **Catalog Archive Fetch** is the default way to retrieve a **Skill Catalog**
 - An **Installed Skill** lives in a **Skill Install Directory**
 - A **Skill Install Lockfile** records source metadata for **Installed Skills**
+- A **Skill Install Lockfile** stores an **Installed Skill Hash** for each **Installed Skill**
+- An **Install Conflict** requires a **Forced Skill Install** before existing local files are overwritten
+- The **Instruction File Non-Modification Rule** limits v1 installation to skill files and the **Skill Install Lockfile**
 
 - A **CDD Skill** is used for frontend UI/UX implementation work.
 - A **CDD Skill** may use stories, visual checks, interaction checks, accessibility checks, and codebase conventions as supporting artifacts.

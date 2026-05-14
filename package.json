@@ -1,0 +1,23 @@
+{
+  "name": "@ghiffaribraviah/skill-set",
+  "version": "0.1.0",
+  "description": "CLI for installing agent skills from a GitHub skill catalog.",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "skill-set": "bin/skill-set.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "skills/",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "check": "node --check bin/skill-set.js && node --check src/*.js",
+    "smoke": "node test/smoke.js"
+  }
+}
